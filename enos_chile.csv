@@ -1,0 +1,246 @@
+Año,Mes,Estado_ENOS,Intensidad
+2006,1,La Niña,-1
+2006,2,La Niña,-1
+2006,3,La Niña,-1
+2006,4,Neutral,0
+2006,5,Neutral,0
+2006,6,Neutral,0
+2006,7,Neutral,0
+2006,8,Neutral,0
+2006,9,El Niño,1
+2006,10,El Niño,1
+2006,11,El Niño,1
+2006,12,El Niño,1
+2007,1,El Niño,1
+2007,2,Neutral,0
+2007,3,Neutral,0
+2007,4,Neutral,0
+2007,5,Neutral,0
+2007,6,Neutral,0
+2007,7,La Niña,-1
+2007,8,La Niña,-1
+2007,9,La Niña,-2
+2007,10,La Niña,-2
+2007,11,La Niña,-3
+2007,12,La Niña,-3
+2008,1,La Niña,-3
+2008,2,La Niña,-2
+2008,3,La Niña,-2
+2008,4,La Niña,-1
+2008,5,La Niña,-1
+2008,6,La Niña,-1
+2008,7,Neutral,0
+2008,8,Neutral,0
+2008,9,Neutral,0
+2008,10,Neutral,0
+2008,11,La Niña,-1
+2008,12,La Niña,-1
+2009,1,La Niña,-1
+2009,2,La Niña,-1
+2009,3,La Niña,-1
+2009,4,Neutral,0
+2009,5,Neutral,0
+2009,6,Neutral,0
+2009,7,El Niño,1
+2009,8,El Niño,1
+2009,9,El Niño,1
+2009,10,El Niño,2
+2009,11,El Niño,2
+2009,12,El Niño,3
+2010,1,El Niño,3
+2010,2,El Niño,2
+2010,3,El Niño,1
+2010,4,Neutral,0
+2010,5,Neutral,0
+2010,6,La Niña,-1
+2010,7,La Niña,-2
+2010,8,La Niña,-2
+2010,9,La Niña,-3
+2010,10,La Niña,-3
+2010,11,La Niña,-3
+2010,12,La Niña,-3
+2011,1,La Niña,-2
+2011,2,La Niña,-2
+2011,3,La Niña,-1
+2011,4,La Niña,-1
+2011,5,La Niña,-1
+2011,6,Neutral,0
+2011,7,La Niña,-1
+2011,8,La Niña,-1
+2011,9,La Niña,-1
+2011,10,La Niña,-2
+2011,11,La Niña,-2
+2011,12,La Niña,-2
+2012,1,La Niña,-1
+2012,2,La Niña,-1
+2012,3,La Niña,-1
+2012,4,Neutral,0
+2012,5,Neutral,0
+2012,6,Neutral,0
+2012,7,Neutral,0
+2012,8,Neutral,0
+2012,9,Neutral,0
+2012,10,Neutral,0
+2012,11,Neutral,0
+2012,12,Neutral,0
+2013,1,Neutral,0
+2013,2,Neutral,0
+2013,3,Neutral,0
+2013,4,Neutral,0
+2013,5,Neutral,0
+2013,6,Neutral,0
+2013,7,Neutral,0
+2013,8,Neutral,0
+2013,9,Neutral,0
+2013,10,Neutral,0
+2013,11,Neutral,0
+2013,12,Neutral,0
+2014,1,Neutral,0
+2014,2,Neutral,0
+2014,3,Neutral,0
+2014,4,Neutral,0
+2014,5,Neutral,0
+2014,6,Neutral,0
+2014,7,Neutral,0
+2014,8,Neutral,0
+2014,9,Neutral,0
+2014,10,Neutral,0
+2014,11,El Niño,1
+2014,12,El Niño,1
+2015,1,El Niño,1
+2015,2,El Niño,1
+2015,3,El Niño,1
+2015,4,El Niño,1
+2015,5,El Niño,2
+2015,6,El Niño,2
+2015,7,El Niño,3
+2015,8,El Niño,3
+2015,9,El Niño,3
+2015,10,El Niño,3
+2015,11,El Niño,3
+2015,12,El Niño,3
+2016,1,El Niño,3
+2016,2,El Niño,3
+2016,3,El Niño,3
+2016,4,El Niño,2
+2016,5,El Niño,1
+2016,6,Neutral,0
+2016,7,Neutral,0
+2016,8,La Niña,-1
+2016,9,La Niña,-1
+2016,10,La Niña,-1
+2016,11,La Niña,-1
+2016,12,La Niña,-1
+2017,1,Neutral,0
+2017,2,Neutral,0
+2017,3,Neutral,0
+2017,4,Neutral,0
+2017,5,Neutral,0
+2017,6,Neutral,0
+2017,7,Neutral,0
+2017,8,Neutral,0
+2017,9,Neutral,0
+2017,10,La Niña,-1
+2017,11,La Niña,-1
+2017,12,La Niña,-2
+2018,1,La Niña,-1
+2018,2,La Niña,-1
+2018,3,La Niña,-1
+2018,4,Neutral,0
+2018,5,Neutral,0
+2018,6,Neutral,0
+2018,7,Neutral,0
+2018,8,Neutral,0
+2018,9,Neutral,0
+2018,10,El Niño,1
+2018,11,El Niño,1
+2018,12,El Niño,1
+2019,1,El Niño,1
+2019,2,El Niño,1
+2019,3,El Niño,1
+2019,4,El Niño,1
+2019,5,El Niño,1
+2019,6,El Niño,1
+2019,7,Neutral,0
+2019,8,Neutral,0
+2019,9,Neutral,0
+2019,10,Neutral,0
+2019,11,El Niño,1
+2019,12,El Niño,1
+2020,1,El Niño,1
+2020,2,El Niño,1
+2020,3,Neutral,0
+2020,4,Neutral,0
+2020,5,Neutral,0
+2020,6,Neutral,0
+2020,7,Neutral,0
+2020,8,La Niña,-1
+2020,9,La Niña,-1
+2020,10,La Niña,-2
+2020,11,La Niña,-2
+2020,12,La Niña,-2
+2021,1,La Niña,-2
+2021,2,La Niña,-1
+2021,3,La Niña,-1
+2021,4,La Niña,-1
+2021,5,La Niña,-1
+2021,6,Neutral,0
+2021,7,Neutral,0
+2021,8,La Niña,-1
+2021,9,La Niña,-1
+2021,10,La Niña,-1
+2021,11,La Niña,-2
+2021,12,La Niña,-2
+2022,1,La Niña,-2
+2022,2,La Niña,-1
+2022,3,La Niña,-2
+2022,4,La Niña,-2
+2022,5,La Niña,-2
+2022,6,La Niña,-1
+2022,7,La Niña,-1
+2022,8,La Niña,-1
+2022,9,La Niña,-2
+2022,10,La Niña,-2
+2022,11,La Niña,-1
+2022,12,La Niña,-1
+2023,1,La Niña,-1
+2023,2,Neutral,0
+2023,3,Neutral,0
+2023,4,Neutral,0
+2023,5,El Niño,1
+2023,6,El Niño,1
+2023,7,El Niño,2
+2023,8,El Niño,2
+2023,9,El Niño,3
+2023,10,El Niño,3
+2023,11,El Niño,3
+2023,12,El Niño,3
+2024,1,El Niño,3
+2024,2,El Niño,3
+2024,3,El Niño,2
+2024,4,El Niño,1
+2024,5,Neutral,0
+2024,6,Neutral,0
+2024,7,Neutral,0
+2024,8,Neutral,0
+2024,9,Neutral,0
+2024,10,La Niña,-1
+2024,11,La Niña,-1
+2024,12,La Niña,-1
+2025,1,La Niña,-1
+2025,2,La Niña,-1
+2025,3,Neutral,0
+2025,4,Neutral,0
+2025,5,Neutral,0
+2025,6,Neutral,0
+2025,7,Neutral,0
+2025,8,Neutral,0
+2025,9,Neutral,0
+2025,10,Neutral,0
+2025,11,Neutral,0
+2025,12,Neutral,0
+2026,1,Neutral,0
+2026,2,Neutral,0
+2026,3,Neutral,0
+2026,4,Neutral,0
+2026,5,Neutral,0
