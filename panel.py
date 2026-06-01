@@ -5,8 +5,8 @@ import streamlit as st
 import numpy as np
 
 # 1. CONFIGURACIÓN DE LA PÁGINA
-st.set_page_config(layout="wide", page_title="Análisis Oceanográfico y Pesquero")
-st.title("🐟 Panel Interactivo Avanzado: Desembarques vs. Eventos ENOS")
+st.set_page_config(layout="wide", page_title="Análisis ENOS y Desdembarques, Chile 2020-24")
+st.title("Panel Interactivo: Desembarques vs. Eventos ENOS")
 
 # 2. CARGA DE DATOS
 @st.cache_data
@@ -57,15 +57,12 @@ df_merged = pd.merge(df_mensual, df_enos, on=['Año', 'Mes'], how='inner')
 df_merged['Fecha'] = pd.to_datetime(df_merged['Año'].astype(str) + '-' + df_merged['Mes'].astype(str).str.zfill(2))
 df_merged.sort_values('Fecha', inplace=True)
 
-# --- NUEVO: BOTÓN DE DESCARGA EN LA BARRA LATERAL ---
+# BOTÓN DE DESCARGA EN LA BARRA LATERAL
 st.sidebar.markdown("---")
 st.sidebar.subheader("💾 Exportar Datos")
 
 if not df_merged.empty:
-    # Convertimos el DataFrame a CSV para que pueda ser descargado
-    # Usamos utf-8-sig para que Excel en español lea bien las tildes y las "ñ"
     csv = df_merged.drop(columns=['Fecha']).to_csv(index=False, encoding='utf-8-sig')
-    
     st.sidebar.download_button(
         label="📥 Descargar Datos Filtrados (CSV)",
         data=csv,
@@ -74,7 +71,6 @@ if not df_merged.empty:
     )
 else:
     st.sidebar.warning("No hay datos para descargar con estos filtros.")
-# ----------------------------------------------------
 
 if df_merged.empty:
     st.warning("⚠️ No hay registros de desembarque para esta combinación de filtros.")
@@ -150,3 +146,13 @@ else:
     fig.update_yaxes(title_text="Toneladas", row=2, col=2)
 
     st.plotly_chart(fig, use_container_width=True)
+
+# --- NUEVO: SECCIÓN DE REFERENCIAS Y METODOLOGÍA ---
+st.markdown("---")
+st.markdown("### 📚 Fuentes de Datos y Replicabilidad")
+st.markdown("""
+* **Datos Pesqueros:** Histórico de Desembarques Totales (2000-2024), extraídos del *Anuario Estadístico* del **Servicio Nacional de Pesca y Acuicultura (SERNAPESCA)** de Chile (http://anuario.sernapesca.dataobservatory.net/).
+* **Datos Oceanográficos:** Clasificación del fenómeno ENOS (El Niño-Oscilación del Sur) basada en el **Índice del Niño Oceánico (ONI)**, calculado por el *Climate Prediction Center* de la **NOAA** (Región Niño 3.4).
+* **Metodología de Intensidad:** La intensidad fue categorizada de -3 a +3 según las anomalías térmicas mensuales para modelar correlaciones lineales.
+* **Desarrollo:** Panel analítico construido utilizando Python, Pandas, Plotly y Streamlit.
+""")
