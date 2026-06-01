@@ -155,5 +155,5 @@ st.markdown("""
 * **Datos Oceanográficos:** Clasificación del fenómeno ENOS (El Niño-Oscilación del Sur) basada en el **Índice del Niño Oceánico (ONI)**, calculado por el *Climate Prediction Center* de la **NOAA** (Región Niño 3.4).
 * **Metodología de Intensidad:** La intensidad fue categorizada de -3 a +3 según las anomalías térmicas mensuales para modelar correlaciones lineales.
 * **Desarrollo:** Panel analítico construido utilizando Python, Pandas, Plotly y Streamlit.
-* **Replicabilidad:** Puedes encontrar la base de desarrollo y los datos en el GIT: .
+* **Replicabilidad:** Puedes encontrar la base de desarrollo y los datos en el GIT:  .
 """)
