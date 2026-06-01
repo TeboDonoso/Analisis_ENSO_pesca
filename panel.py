@@ -21,58 +21,60 @@ df_pesca, df_enos = cargar_datos()
 # 3. FILTROS INTERACTIVOS (Barra Lateral)
 st.sidebar.header("⚙️ Parámetros de Análisis")
 
-# Filtro Años (Slider)
 min_year = int(df_pesca['Año'].min())
 max_year = int(df_pesca['Año'].max())
 año_rango = st.sidebar.slider("Rango de Años:", min_value=min_year, max_value=max_year, value=(min_year, max_year))
 
-# NUEVO: Filtro Mes
 lista_meses = ['Todos los Meses'] + sorted(df_pesca['Mes'].dropna().astype(int).unique().tolist())
 mes_sel = st.sidebar.selectbox("Mes:", lista_meses)
 
-# Filtro Región
 lista_regiones = ['Todas las Regiones'] + sorted(df_pesca['region'].dropna().astype(str).unique().tolist())
 region_sel = st.sidebar.selectbox("Región de Desembarque:", lista_regiones)
 
-# NUEVO: Filtro Subsector (Tipo de Agente)
 lista_subsectores = ['Todos los Subsectores'] + sorted(df_pesca['tipo_agente'].dropna().astype(str).unique().tolist())
 subsector_sel = st.sidebar.selectbox("Subsector (Artesanal/Industrial):", lista_subsectores)
 
-# Filtro Especie
 lista_especies = ['Todas las Especies'] + sorted(df_pesca['especie'].dropna().astype(str).unique().tolist())
 especie_sel = st.sidebar.selectbox("Recurso / Especie:", lista_especies)
 
 # 4. APLICAR FILTROS
 df_filtrado = df_pesca.copy()
 
-# Filtrar por Rango de Año
-df_filtrado = df_filtrado[(df_filtrado['Año'] >= año_rango[0]) & (df_filtrado['Año'] <= año_rango[1])]
-
-# Filtrar por Mes
+if año_rango:
+    df_filtrado = df_filtrado[(df_filtrado['Año'] >= año_rango[0]) & (df_filtrado['Año'] <= año_rango[1])]
 if mes_sel != 'Todos los Meses':
     df_filtrado = df_filtrado[df_filtrado['Mes'] == mes_sel]
-
-# Filtrar por Región
 if region_sel != 'Todas las Regiones':
     df_filtrado = df_filtrado[df_filtrado['region'] == region_sel]
-
-# Filtrar por Subsector
 if subsector_sel != 'Todos los Subsectores':
     df_filtrado = df_filtrado[df_filtrado['tipo_agente'] == subsector_sel]
-    
-# Filtrar por Especie
 if especie_sel != 'Todas las Especies':
     df_filtrado = df_filtrado[df_filtrado['especie'] == especie_sel]
 
 # 5. PROCESAMIENTO
-# Agrupamos sumando las toneladas por Año y Mes según los filtros aplicados
 df_mensual = df_filtrado.groupby(['Año', 'Mes'])['toneladas'].sum().reset_index()
-# Cruzamos con la base de datos de El Niño
 df_merged = pd.merge(df_mensual, df_enos, on=['Año', 'Mes'], how='inner')
-
-# Creamos la fecha para la serie de tiempo
 df_merged['Fecha'] = pd.to_datetime(df_merged['Año'].astype(str) + '-' + df_merged['Mes'].astype(str).str.zfill(2))
 df_merged.sort_values('Fecha', inplace=True)
+
+# --- NUEVO: BOTÓN DE DESCARGA EN LA BARRA LATERAL ---
+st.sidebar.markdown("---")
+st.sidebar.subheader("💾 Exportar Datos")
+
+if not df_merged.empty:
+    # Convertimos el DataFrame a CSV para que pueda ser descargado
+    # Usamos utf-8-sig para que Excel en español lea bien las tildes y las "ñ"
+    csv = df_merged.drop(columns=['Fecha']).to_csv(index=False, encoding='utf-8-sig')
+    
+    st.sidebar.download_button(
+        label="📥 Descargar Datos Filtrados (CSV)",
+        data=csv,
+        file_name='desembarques_vs_enos_filtrado.csv',
+        mime='text/csv',
+    )
+else:
+    st.sidebar.warning("No hay datos para descargar con estos filtros.")
+# ----------------------------------------------------
 
 if df_merged.empty:
     st.warning("⚠️ No hay registros de desembarque para esta combinación de filtros.")
@@ -84,7 +86,6 @@ else:
     total_tons = df_merged['toneladas'].sum()
     col1.metric("Total Toneladas (Periodo Seleccionado)", f"{total_tons:,.0f}")
     
-    # Cálculo de Correlación (r) y Determinación (R2)
     if len(df_merged) > 2 and df_merged['Intensidad'].std() > 0 and df_merged['toneladas'].std() > 0:
         r = np.corrcoef(df_merged['Intensidad'], df_merged['toneladas'])[0, 1]
         r2 = r**2
@@ -113,7 +114,6 @@ else:
     color_map = {'El Niño': '#ef553b', 'La Niña': '#636efa', 'Neutral': '#00cc96'}
     estados = ['El Niño', 'La Niña', 'Neutral']
 
-    # --- GRÁFICO 1 y 2: Serie de Tiempo y Boxplot ---
     for estado in estados:
         df_temp = df_merged[df_merged['Estado_ENOS'] == estado]
         if not df_temp.empty:
@@ -126,7 +126,6 @@ else:
                 row=2, col=1
             )
 
-    # --- GRÁFICO 3: Dispersión y Línea de Regresión para el R2 ---
     fig.add_trace(
         go.Scatter(
             x=df_merged['Intensidad'], y=df_merged['toneladas'],
@@ -135,7 +134,6 @@ else:
         ), row=2, col=2
     )
     
-    # Dibujar la línea de tendencia si hay datos suficientes
     if len(df_merged) > 2 and df_merged['Intensidad'].std() > 0:
         m, b = np.polyfit(df_merged['Intensidad'], df_merged['toneladas'], 1)
         linea_x = np.array([-3, 3])
@@ -145,7 +143,6 @@ else:
             row=2, col=2
         )
 
-    # Configuraciones visuales finales
     fig.update_layout(height=800, barmode='stack', template='plotly_white', margin=dict(t=40, b=40))
     fig.update_yaxes(title_text="Toneladas", row=1, col=1)
     fig.update_yaxes(title_text="Toneladas", row=2, col=1)
